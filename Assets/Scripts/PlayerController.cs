@@ -63,6 +63,10 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+        if(Time.timeScale == 0f)
+        {
+            return;
+        }
         Control();
     }
     void OnEnable()
@@ -126,6 +130,7 @@ public class PlayerController : MonoBehaviour
         if(jumpAction.action.WasPressedThisFrame() && charCon.isGrounded == true)
         {
             currentMovement.y = jumpPower;
+            AudioManager.instance.PlaySFX(8);
         }
 
 

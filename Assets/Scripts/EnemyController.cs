@@ -17,7 +17,8 @@ public class EnemyController : MonoBehaviour
     public Animator anim;
 
     public Transform[] patrolPoints;
-    private int currentPatrolPoint = 0;
+    [HideInInspector]
+    public int currentPatrolPoint = 0;
 
     public Transform pointsHolder;
     public float pointWaitTime = 15f;
@@ -25,6 +26,7 @@ public class EnemyController : MonoBehaviour
 
     private bool isDead;
     public float currentHealth = 35f;
+    public float startingHealth = 35f;
 
     public float waitToDisappear = 4f;
 
@@ -33,6 +35,9 @@ public class EnemyController : MonoBehaviour
     public float timeBetweenShots = .2f;
     private float shotCounter;
     public float shotDamage = 10f;
+
+    public bool splitOnDeath;
+    public float minSize = .4f;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +50,8 @@ public class EnemyController : MonoBehaviour
         pointsHolder.SetParent(null);
         waitCounter = Random.Range(.75f, 1.25f) * pointWaitTime;
         shotCounter = timeBetweenShots;
+
+        currentHealth = startingHealth;
 
     }
 
@@ -61,7 +68,12 @@ public class EnemyController : MonoBehaviour
                 if(transform.localScale.x == 0)
                 {
                     Destroy(gameObject);
-                    Destroy(pointsHolder.gameObject);
+
+                    if(!splitOnDeath)
+                    {
+                        Destroy(pointsHolder.gameObject);
+                    }
+                    
                 }
             }
 
@@ -92,9 +104,11 @@ public class EnemyController : MonoBehaviour
                 shootPoint.LookAt(player.cam.transform.position);
                 EnemyProjectile newProjectile = Instantiate(projectile, shootPoint.position, shootPoint.rotation);
                 newProjectile.damageAmount = shotDamage;
+                newProjectile.transform.localScale = transform.localScale;
 
                 shotCounter = timeBetweenShots;
                 anim.SetTrigger("shooting");
+                AudioManager.instance.PlaySFX(2);
             }
             
         }
@@ -142,6 +156,24 @@ public class EnemyController : MonoBehaviour
         currentHealth -= damageToTake;
         if(currentHealth <= 0)
         {
+            if(splitOnDeath)
+            {
+                if(transform.localScale.x > minSize)
+                {
+ 
+                    startingHealth *= .75f;
+                    shotDamage *= .75f;
+                    moveSpeed *= .75f;
+                    currentHealth = startingHealth;
+
+                    GameObject clone1 = Instantiate(gameObject, transform.position + (transform.right * .5f * transform.localScale.x), Quaternion.identity);
+                    GameObject clone2 = Instantiate(gameObject, transform.position + (-transform.right * .5f * transform.localScale.x), Quaternion.identity);
+
+                    clone1.transform.localScale = transform.localScale * .75f;
+                    clone2.transform.localScale = transform.localScale * .75f;
+                }
+                
+            }
             anim.SetTrigger("die");
             isDead = true;
 

@@ -12,6 +12,8 @@ public class LevelExit : MonoBehaviour
         if(other.tag == "Player")
         {
             SceneManager.LoadScene(sceneToLoad);
+            AudioManager.instance.PlayLevelMusic();
+            AudioManager.instance.PlaySFX(3);
         }
     }
 }

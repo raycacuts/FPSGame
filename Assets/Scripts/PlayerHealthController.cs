@@ -31,6 +31,11 @@ public class PlayerHealthController : MonoBehaviour
 
             PlayerController.instance.isDead = true;
             UIController.instance.ShowDeathScreen();
+            AudioManager.instance.PlaySFX(6);
+        }
+        else
+        {
+            AudioManager.instance.PlaySFX(7);
         }
         UIController.instance.UpdateHealthText(currentHealth);
     }

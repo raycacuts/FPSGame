@@ -160,7 +160,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3202128065457885113}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.1643819, z: -0, w: 0.9863968}
+  m_LocalRotation: {x: 0, y: 0.16438478, z: 0, w: 0.98639625}
   m_LocalPosition: {x: -22.54, y: 1, z: -9.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad674b1b33990794296510216fa582d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 10000
 --- !u!1 &3411734812793545594
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +529,7 @@ MonoBehaviour:
   remainingAmmo: 300
   pickupAmount: 30
   damageAmount: 20
+  sfxIndex: 10
 --- !u!4 &616375021137176743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c88ec6b5ff14284f851db65b3055ce4, type: 3}
@@ -839,6 +840,7 @@ MonoBehaviour:
   remainingAmmo: 75
   pickupAmount: 15
   damageAmount: 50
+  sfxIndex: 10
 --- !u!1001 &6257254361657196562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1057,6 +1059,7 @@ MonoBehaviour:
   remainingAmmo: 450
   pickupAmount: 90
   damageAmount: 5
+  sfxIndex: 12
 --- !u!1001 &7572735269961706639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1262,6 +1265,7 @@ MonoBehaviour:
   remainingAmmo: 300
   pickupAmount: 60
   damageAmount: 8
+  sfxIndex: 11
 --- !u!4 &7828004877703961740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 910c292ce2c84f242b98931b57fb38df, type: 3}

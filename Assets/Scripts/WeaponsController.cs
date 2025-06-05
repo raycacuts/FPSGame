@@ -34,6 +34,8 @@ public class WeaponsController : MonoBehaviour
     private int currentWeapon = 0;
     private int previousWeapon = 0;
 
+    private int sfxIndex;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,10 +72,12 @@ public class WeaponsController : MonoBehaviour
                     Instantiate(damageEffect, hit.point, Quaternion.identity);
 
                     hit.transform.GetComponent<EnemyController>().TakeDamage(damageAmount);
+                    AudioManager.instance.PlaySFX(0);
                 }
                 else
                 {
                     Instantiate(impactEffect, hit.point, Quaternion.identity);
+                    AudioManager.instance.PlaySFX(1);
                 }
 
             }
@@ -85,6 +89,7 @@ public class WeaponsController : MonoBehaviour
             currentAmmo--;
 
             UIcon.UpdateAmmoText(currentAmmo, remainingAmmo);
+            AudioManager.instance.PlaySFX(sfxIndex);
         }
         
     }
@@ -141,6 +146,7 @@ public class WeaponsController : MonoBehaviour
         damageAmount = weapons[weaponToSet].damageAmount;
         muzzleFlare = weapons[weaponToSet].muzzleFlare;
 
+        sfxIndex = weapons[weaponToSet].sfxIndex;
 
         foreach(Weapon w in weapons)
         {

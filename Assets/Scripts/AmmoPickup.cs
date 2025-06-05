@@ -11,6 +11,7 @@ public class AmmoPickup : MonoBehaviour
             FindFirstObjectByType<WeaponsController>().GetAmmo();
 
             Destroy(gameObject);
+            AudioManager.instance.PlaySFX(5);
         }
     }
 }

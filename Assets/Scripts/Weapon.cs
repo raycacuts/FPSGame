@@ -26,4 +26,6 @@ public class Weapon : MonoBehaviour
     public int pickupAmount = 10;
 
     public float damageAmount = 15f;
+
+    public int sfxIndex;
 }
