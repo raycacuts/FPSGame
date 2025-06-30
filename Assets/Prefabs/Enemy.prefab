@@ -118,16 +118,18 @@ MonoBehaviour:
   patrolPoints:
   - {fileID: 3766011343950037228}
   - {fileID: 2506488362560540151}
-  - {fileID: 7637932298521077704}
-  - {fileID: 3983466474298295841}
+  currentPatrolPoint: 0
   pointsHolder: {fileID: 7624332727174040980}
   pointWaitTime: 15
   currentHealth: 35
+  startingHealth: 35
   waitToDisappear: 4
   shootPoint: {fileID: 2146446751144829081}
   projectile: {fileID: 821348607021219648, guid: 4372973dc5720164b87bdfcef75936a1, type: 3}
   timeBetweenShots: 2
   shotDamage: 10
+  splitOnDeath: 0
+  minSize: 0.4
 --- !u!54 &6680100719438340166
 Rigidbody:
   m_ObjectHideFlags: 0

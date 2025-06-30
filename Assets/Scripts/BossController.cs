@@ -7,6 +7,7 @@ public class BossController : MonoBehaviour
     public Transform[] ammoPoints;
 
     public GameObject ammoPickup;
+    public GameObject healthPickup;
     
     public float ammoSpawnTime;
     private float ammoCounter;
@@ -44,7 +45,11 @@ public class BossController : MonoBehaviour
         if(ammoCounter <= 0)
         {
             ammoCounter = ammoSpawnTime;
-            Instantiate(ammoPickup, ammoPoints[Random.Range(0, ammoPoints.Length)].position, Quaternion.identity);
+            int value = UnityEngine.Random.Range(0, 2);
+            if (value == 0)
+                Instantiate(ammoPickup, ammoPoints[Random.Range(0, ammoPoints.Length)].position, Quaternion.identity);
+            else
+                Instantiate(healthPickup, ammoPoints[Random.Range(0, ammoPoints.Length)].position, Quaternion.identity);
         }
     }
 }

@@ -4302,7 +4302,8 @@ MonoBehaviour:
   - {fileID: 1071837459}
   - {fileID: 1369038380}
   - {fileID: 1504340062}
-  ammoPickup: {fileID: 3149162949933948306, guid: 4700a84a8c33287499e087f313de32a4, type: 3}
+  ammoPickup: {fileID: 866696410211019044, guid: 39e3bdd38e1769246a964dcecfbe320f, type: 3}
+  healthPickup: {fileID: 3149162949933948306, guid: 4700a84a8c33287499e087f313de32a4, type: 3}
   ammoSpawnTime: 7.5
   checkInterval: 0
   levelExit: {fileID: 1507656631}
